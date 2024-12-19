@@ -1,0 +1,150 @@
+.pageContainer {
+    width: 100vw;
+    display: flex;
+    background-color: #fff;
+    font-family: "Noto Sans KR-Regular", Helvetica, sans-serif;
+    overflow: visible;
+}
+
+.mainContent {
+    width: 100vw;
+    min-height: 100vh;
+    flex: 1;
+    padding: 20px 40px;
+}
+
+.pageTitle {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.tabsContainer {
+    margin-top: 20px;
+    display: flex;
+}
+
+.tab, .tabActive {
+    padding: 6px 16px;
+    border-radius: 4px 4px 0 0;
+    font-size: 16px;
+    border: 1px solid #979797;
+    color: #979797;
+    background-color: #fff;
+}
+
+.tabActive {
+    background-color: #727272;
+    color: #fff;
+    border: none;
+}
+
+.hideButton {
+    margin-left: auto;
+    background-color: #212121;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.divider {
+    height: 4px;
+    background-color: #727272;
+}
+
+.sectionTitle {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.actionButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #000;
+}
+
+.buttonIcon {
+    width: 14px;
+    height: 14px;
+}
+
+.filterSection {
+    display: flex;
+    border: 1px solid #c1c1c1;
+    min-height: 48px;
+}
+
+.filterLabel {
+    background-color: #f2f2f2;
+    padding: 10px;
+    width: 115px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.filterOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+    align-items: center;
+}
+
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox {
+
+}
+
+.checkIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.selectContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    background-color: #fff;
+    min-width: 122px;
+}
+
+.selectIcon {
+    width: 14px;
+    margin-left: auto;
+}
+
+.filtersContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.tableContainer{
+    width: calc(100vw - 80px);
+    overflow-x: scroll;
+}

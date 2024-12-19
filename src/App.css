@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-family: "outfit", sans-serif;
+}
+
+.hide{
+    display: none !important;
+}
