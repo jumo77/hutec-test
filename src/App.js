@@ -255,7 +255,9 @@ export default function App() {
     const [submitStatus, setSubmitStatus] = useState(ALL_LABEL)
     const [testingStatus, setTestingStatus] = useState(ALL_LABEL)
     const [gradingStatus, setGradingStatus] = useState(ALL_LABEL)
-    
+
+    const [searchAttribute, setSearchAttribute] = useState("id")
+    const [searching, setSearching] = useState("")
     // grading
 
     // article
@@ -312,8 +314,9 @@ export default function App() {
             {label: "접수 구분", options: admissionType, additionalSelects:[
                     {label:"년도", options: D_TEST_ADMIS_YEAR, value: year, set:setYear},
                     {label:"차수", options: D_TEST_ADMIS_ROUND, value: round, set:setRound},]},
-            {label: "텍스트 검색", search: "검색어 입력", additionalSelects: [
-                    {label:"검색 옵션", options: table.test.all}]},
+            {label: "텍스트 검색", additionalSelects: [
+                    {label:"검색 옵션", options: table.test.all, value: searchAttribute, set:setSearchAttribute}],
+                search: {label: "검색어 입력", value:searching, set:setSearching}},
             {label: "상태", additionalSelects: [
                     {label:"접수 상태", options:D_TEST_APPLIC_STAT, value: appliStatus, set: setAppliStatus},
                     {label:"출제 상태", options:D_TEST_SUBMIT_STAT, value: submitStatus, set: setSubmitStatus},
@@ -433,6 +436,9 @@ export default function App() {
             submitStatus, setSubmitStatus,
             testingStatus, setTestingStatus,
             gradingStatus, setGradingStatus,
+
+            searching, setSearching,
+            searchAttribute, setSearchAttribute,
         }}>
             <Router>
                 <Sidebar/>

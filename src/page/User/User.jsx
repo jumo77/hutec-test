@@ -97,6 +97,9 @@ export default function User() {
         submitStatus, setSubmitStatus,
         testingStatus, setTestingStatus,
         gradingStatus, setGradingStatus,
+
+        searching, setSearching,
+        searchAttribute, setSearchAttribute,
     } = useContext(SearchContext)
 
     const [total, setTotal] = useState(DumiData[site]);
@@ -181,7 +184,7 @@ export default function User() {
 
 
                 if (expertStatus !== ALL_LABEL && expertStatus + L_USER !== it.expertStatus) return false;
-                if (expertRequest !== ALL && expertRequest !== it.userSubscriptionStatus) return false;
+                if (expertRequest !== ALL_LABEL && expertRequest !== it.userSubscriptionStatus) return false;
 
                 if (!(question && it.expertServiceType === serviceType[0].label)
                     && !(grading && it.expertServiceType === serviceType[1].label)
@@ -264,11 +267,12 @@ export default function User() {
                 if(year!==ALL_LABEL && year !== it.year) return false;
                 if(round!==ALL_LABEL && round !== it.round) return false;
 
-                if(appliStatus !==ALL_LABEL && appliStatus!== it.appliStatus )return false
-                if(submitStatus !==ALL_LABEL && submitStatus!== it.submittingStatus )return false
-                if(testingStatus !==ALL_LABEL && testingStatus!== it.testingStatus )return false
-                if(gradingStatus !==ALL_LABEL && gradingStatus!== it.gradingStatus )return false
-                console.log(appliStatus !==ALL_LABEL && appliStatus!== it.appliStatus)
+                if(appliStatus !==ALL_LABEL && appliStatus!== it.appliStatus )return false;
+                if(submitStatus !==ALL_LABEL && submitStatus!== it.submittingStatus )return false;
+                if(testingStatus !==ALL_LABEL && testingStatus!== it.testingStatus )return false;
+                if(gradingStatus !==ALL_LABEL && gradingStatus!== it.gradingStatus )return false;
+
+                if(searching !==""&& !it[searchAttribute].toString().includes(searching)) return false;
             }
             return true;
         }))
@@ -278,7 +282,7 @@ export default function User() {
 
     useEffect(() => {
         search()
-    }, [tabId], site);
+    }, [tabId, site]);
 
     useEffect(() => {
         // searchResult가 변경될 때마다 실행

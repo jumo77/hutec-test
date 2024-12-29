@@ -87,6 +87,25 @@ export default function Table({data, header, to}) {
                     {site === "user" && d.inquiryContents !== undefined && <td>{d.inquiryContents}</td>}
                     {site === "user" && d.attachedFile !== undefined && <td>{d.attachedFile}</td>}
 
+                    {site === "expert" && d.id !== undefined && <td>{d.id}</td>}
+                    {site === "expert" && d.site !== undefined && <td>{d.site}<br/>{d.userType}</td>}
+                    {site === "expert" && d.userSubscriptionStatus !== undefined && <td>{d.userSubscriptionStatus}</td>}
+                    {site === "expert" && d.name !== undefined && <td>{d.name}<br/>{d.age}∙{d.gender}</td>}
+                    {site === "expert" && d.email !== undefined && <td>{d.email}<br/>{d.mobilePhone}</td>}
+                    {site === "expert" && d.city !== undefined && <td>{d.city}<br/>{d.address.split(" ")[0]}</td>}
+                    {site === "expert" && d.groupStatus !== undefined && <td>{d.groupStatus ? d.groupName : ""}</td>}
+                    {site === "expert" && d.joinDate !== undefined && <td>{d.joinDate}<br/>{d.joinChannel}</td>}
+                    {site === "expert" && d.firstAccessDevice !== undefined && <td>{d.firstAccessDevice}</td>}
+                    {site === "expert" && d.recentLogin !== undefined && <td>{d.recentLogin}<br/>{d.stayTime}</td>}
+                    {site === "expert" && d.photo !== undefined && <td>{d.photo}</td>}
+                    {site === "expert" && d.alertKaKao !== undefined &&
+                        <td>{d.alertKaKao ? "카카오" : null}{d.alertSms && d.alertKaKao ?
+                            <br/> : null}{d.alertSms ? "문자" : null}{d.alertSms && d.alertEmail ?
+                            <br/> : null}{d.alertEmail ? "이메일" : null}</td>}
+                    {site === "expert" && d.marketingKaKao !== undefined &&
+                        <td>{d.marketingKaKao ? "카카오" : null}{d.marketingSms && d.marketingKaKao ?
+                            <br/> : null}{d.marketingSms ? "문자" : null}{d.marketingSms && d.marketingEmail ?
+                            <br/> : null}{d.marketingEmail ? "이메일" : null}</td>}
                     {site === "expert" && d.resume !== undefined && <td>{d.resume}</td>}
                     {site === "expert" && d.categoryB !== undefined &&
                         <td>{d.categoryB}<br/>{d.categoryM}<br/>{d.categoryS}</td>}

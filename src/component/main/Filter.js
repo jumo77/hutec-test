@@ -21,7 +21,8 @@ export default function Filter({label, options, additionalSelects, search}) {
                         ))}
                     </select>
                 ))}
-                {search? <input placeholder={search}/>:null}
+                {search? <input placeholder={search.label} value={search.value}
+                    onChange={(e)=>{search.set(e.target.value)}}/>:null}
             </div>
         </div>
     );
