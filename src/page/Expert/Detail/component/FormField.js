@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from '../Detail.module.css';
+import isArray from "../../../../component/const/isArray";
 
 export const FormField = ({ label, value, width, onChange }) => {
 
 
-    if(Array.isArray(value)) {
+    if(isArray(value)) {
         return (
             <div className={styles.fieldContainer} style={{width}}>
                 <label className={styles.label}>{label}</label>

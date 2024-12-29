@@ -1,9 +1,10 @@
 import styles from "../Detail.module.css";
 import React from "react";
+import isArray from "../../../../component/const/isArray";
 
 export const CheckboxField = ({ label, checked, width, onChange }) => {
 
-    if(Array.isArray(checked)){
+    if(isArray(checked)){
         return (
             <div className={styles.fieldContainer} style={{width}}>
                 <label className={styles.label}>{label}</label>

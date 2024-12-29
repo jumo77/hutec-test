@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from '../Detail.module.css';
+import isArray from "../../../../component/const/isArray";
 
 export const DropdownField = ({ label, value, width, options, onChange }) => {
 
-    if(Array.isArray(value)) {
-        return (
+    if(isArray(value)) return (
             <div className={styles.fieldContainer} style={{width}}>
                 <label className={styles.label}>{label}</label>
                 <div>
@@ -27,8 +27,7 @@ export const DropdownField = ({ label, value, width, options, onChange }) => {
                 </div>
             </div>
         )
-    }
-    return (
+    else return (
         <div className={styles.fieldContainer} style={{width}}>
             <label className={styles.label}>{label}</label>
             <select

@@ -41,9 +41,9 @@ export default function Sidebar(){
                 </div>
                 <nav className={styles.navigation}>
                     <div className={styles.menuContainer}>
-                        {SidebarData.map((item, index) => (
-                            <SidebarItem
-                                key={item.url+index.toString()}
+                        {SidebarData.map((item, index) => {
+                            return <SidebarItem
+                                key={item.url + index.toString()}
                                 title={item.title}
                                 icon={item.icon}
                                 iconAlt={item.iconAlt}
@@ -51,7 +51,7 @@ export default function Sidebar(){
                                 url={item.url}
                                 toggle={toggle}
                             />
-                        ))}
+                        })}
                     </div>
                 </nav>
             </div>

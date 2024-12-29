@@ -3,7 +3,7 @@ import Filter from "../../component/main/Filter";
 import {use, useEffect, useState} from "react";
 import Table from "../../component/main/Table";
 import {
-    ALL,
+    ALL_LABEL,
     D_BOUNDARY,
     D_CATEGORY,
     D_EXAM_SUBJECT, D_EXPERT_CATE_B, D_EXPERT_CATE_M, D_EXPERT_CATE_S, D_EXPERT_REQUEST, D_EXPERT_STATUS,
@@ -11,23 +11,17 @@ import {
     D_TEST_DEGREE, D_TEST_SUBJECT,
     D_USER_TYPE, EXPERT, L_SUBSCRIPTION, L_USER
 } from "../../component/const/Const";
+import {tabs} from "../../component/const/tabs";
 
 export default function Expert() {
-
-    // 탭 데이터
-    const tabs = [
-        {label: ALL, id: "all"},
-        {label: "전문가 관리", id: "user"},
-        {label: "정산 관리", id: "activity"},
-    ]
 
     // 사이트별 필터 데이터
     const [meta, setMeta] = useState(true);
     const [exam, setExam] = useState(true);
     const [doc, setDoc] = useState(true);
 
-    const [expertStatus, setExpertStatus] = useState(ALL);
-    const [expertRequest, setExpertRequest] = useState(ALL);
+    const [expertStatus, setExpertStatus] = useState(ALL_LABEL);
+    const [expertRequest, setExpertRequest] = useState(ALL_LABEL);
 
     const siteTypes = [
         {label: '메타번역', value: meta, set: setMeta},
@@ -85,9 +79,9 @@ export default function Expert() {
     ];
 
     // 전문 분야별 필터 데이터
-    const [categoryBig, setCategoryBig] = useState(ALL);
-    const [categoryMiddle, setCategoryMiddle] = useState(ALL);
-    const [categorySmall, setCategorySmall] = useState(ALL);
+    const [categoryBig, setCategoryBig] = useState(ALL_LABEL);
+    const [categoryMiddle, setCategoryMiddle] = useState(ALL_LABEL);
+    const [categorySmall, setCategorySmall] = useState(ALL_LABEL);
 
     // 우선 순위별 필터 데이터
     const [pri, setPri] = useState(true);
@@ -177,80 +171,6 @@ export default function Expert() {
     ];
 
     const [total, setTotal] = useState([
-        {
-            id: "UI240110/001",
-            site: "메타번역",
-            userType: "정식 회원",
-            userSubscriptionStatus: "프리미엄 구독",
-            name: "홍길동",
-            age: 34,
-            gender: "남",
-            email: "abce@gmail.com",
-            mobilePhone: "+82 1012345678",
-            city: "서울",
-            address: "강남구",
-            groupStatus: true,
-            groupName: "삼성",
-            joinDate: "24.10.30",
-            joinChannel: "카카오",
-            firstAccessDevice: "모바일",
-            recentLogin: "24.10.10 월",
-            stayTime: "1h15m 30s",
-            photo: "image.gif",
-            alertKaKao: true,
-            alertSms: true,
-            alertEmail: true,
-            marketingKaKao: true,
-            marketingSms: true,
-            marketingEmail: true,
-
-            resume: "이력서",
-            categoryB:"카테고리(대)",
-            categoryM:"카테고리(중)",
-            categoryS:"카테고리(소)",
-            expertServiceType: "시험 출제",
-            serviceTime: "언제든지",
-            expertStatus:"전문가 승인",
-            expertDate:"24.10.10",
-            priority:"1",
-            expertLevel:"A",
-            rating:4.5,
-            reviews:10,
-            activities:44,
-            matchingDecline:10,
-            settleBank:"은행명",
-            settleAccount:"XXXXX...",
-            settleOwner:"예금주",
-            totalCareer:"20년 12개월",
-            education:"예일대",
-
-            testNation: "대한민국",
-            testCity: "서울",
-            applicationCategory: "정시",
-            numberOfTimes: "25년 1차",
-            testSubject: "번역 전문가",
-            testGrade: "전문1급",
-            category1: "카테고리(대)",
-            category2: "카테고리(중)",
-            category3: "카테고리(소)",
-            examName: "시험명 표시 영역",
-            detailedDescription: "(세부명)",
-            departureLanguage: "한국어",
-            arrivalLanguage: "English(US)",
-            purpose:"응시용",
-            activityCareer:"시험 출제",
-            activityCareerCount:"1",
-            activityDoneDate: "24.01.10",
-            settleDueDate: "24.01.30",
-            settlePlaned: 100000,
-            settleAddition: -10000,
-            settleAmount: 90000,
-            settleStatus: "정산 완료",
-            settledDate: "24.01.10",
-            unspent: 90000,
-            adminMemo: "입력한 텍스트 ..."
-
-        },
     ]);
 
     const [view, setView] = useState([]);
@@ -470,7 +390,7 @@ export default function Expert() {
                     testNation:it.testNation,
                     testCity:it.testCity,
                     applicationCategory:it.applicationCategory,
-                    numberOfTimes:it.numberOfTimes,
+                    round:it.round,
                     testSubject:it.testSubject,
                     testGrade:it.testGrade,
                     category1:it.category1,
@@ -506,7 +426,7 @@ export default function Expert() {
     }
 
     useEffect(() => {
-        differTable("all");
+        differTable(ALL);
         search()
     }, []);
 
@@ -518,7 +438,7 @@ export default function Expert() {
                 && !(doc && it.site === siteTypes[2].label)) return false;
 
 
-            if (expertStatus !== ALL && expertStatus + L_USER !== it.expertStatus) return false;
+            if (expertStatus !== ALL_LABEL && expertStatus + L_USER !== it.expertStatus) return false;
             // if (expertRequest !== ALL && expertRequest !== it.userSubscriptionStatus) return false;
 
             if (!(question && it.expertServiceType === serviceType[0].label)
@@ -565,9 +485,9 @@ export default function Expert() {
                 && !(base && it.purpose === purpose[3].label)) return false
 
 
-            if (categoryBig !== ALL && categoryBig !== it.categoryB) return false;
-            if (categoryMiddle !== ALL && categoryMiddle !== it.categoryM) return false;
-            if (categorySmall !== ALL && categorySmall !== it.categoryS) return false;
+            if (categoryBig !== ALL_LABEL && categoryBig !== it.categoryB) return false;
+            if (categoryMiddle !== ALL_LABEL && categoryMiddle !== it.categoryM) return false;
+            if (categorySmall !== ALL_LABEL && categorySmall !== it.categoryS) return false;
 
             console.log(it.settleStatus)
 
@@ -585,8 +505,8 @@ export default function Expert() {
         setExam(true)
         setDoc(true)
 
-        setExpertStatus(ALL)
-        setExpertRequest(ALL)
+        setExpertStatus(ALL_LABEL)
+        setExpertRequest(ALL_LABEL)
 
         setQuestion(true)
         setGrading(true)
@@ -619,9 +539,9 @@ export default function Expert() {
         setTestType(true)
         setBase(true)
 
-        setCategoryBig(ALL)
-        setCategoryMiddle(ALL)
-        setCategorySmall(ALL)
+        setCategoryBig(ALL_LABEL)
+        setCategoryMiddle(ALL_LABEL)
+        setCategorySmall(ALL_LABEL)
 
         setSettled(true)
         setNonSettled(true)
@@ -635,7 +555,7 @@ export default function Expert() {
             <main className={styles.mainContent}>
                 <h1 className={styles.pageTitle}>전문가 관리</h1>
                 <div className={styles.tabsContainer}>
-                    {tabs.map((it) =>
+                    {tabs["expert"].map((it) =>
                         <button className={styles.tab} onClick={() => {differTable(it.id)
                         }} id={it.id}>{it.label}</button>
                     )}

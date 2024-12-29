@@ -1,7 +1,7 @@
 import styles from "./Login.module.css";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {USER} from "../../component/const/Const";
+import {Const} from "../../component/const/Const";
 
 export default function Login() {
 
@@ -16,7 +16,7 @@ export default function Login() {
 
     const auth = ()=>{
         window.localStorage.setItem("token", "임시 토큰")
-        navigate(USER.url)
+        navigate(Const.USER.url)
     }
 
     return(
