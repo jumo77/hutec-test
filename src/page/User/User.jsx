@@ -412,7 +412,7 @@ export default function User() {
 
                 </div>
                 <div className={styles.tableContainer}>
-                    <Table data={view} header={header} to={Const.USER.url}/>
+                    <Table data={view} header={header} to={site}/>
                 </div>
             </main>
         </div>

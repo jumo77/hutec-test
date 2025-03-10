@@ -6,7 +6,7 @@ export default function Table({data, header, to}) {
 
     let nav = useNavigate()
     const navigate = (index) => {
-        nav(to + "/" + index)
+        nav('/'+ to + "/" + index)
     }
 
     const site = useParams().site

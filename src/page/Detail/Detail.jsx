@@ -6,9 +6,11 @@ import {FormField} from "./component/FormField";
 import {DropdownField} from "./component/DropdownField";
 import {DateField} from "./component/DateField";
 import {CheckboxField} from "./component/CheckboxField";
+import {Const} from "../../component/const/Const";
+import {getTitleByUrl} from "../../component/const/Function";
 
 export default function Detail(){
-    let param = useParams()
+    let { site } = useParams()
 
     const [memberData, setMemberData] = useState({
         basic: {
@@ -268,11 +270,12 @@ export default function Detail(){
         <div className={styles.container}>
             <main className={styles.content}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>회원 관리</h1>
+                    <h1 className={styles.title}>
+                        {getTitleByUrl(site, Const)}
+                    </h1>
                     <button className={styles.saveButton} aria-label="저장">
-                        <img
-                            src="https://cdn.builder.io/api/v1/image/assets/TEMP/bb0601499ee262d95b91e09ec0dd7795b6b6bf61748919fae3ba78e9231a589b?placeholderIfAbsent=true&apiKey=57ce1e6c5ff44d3ea8eda8a1d09f483d"
-                            alt="" className={styles.saveIcon}/>
+                        <img alt="" className={styles.saveIcon}
+                            src="/img/save.svg"/>
                         <span>저장</span>
                     </button>
                 </header>
@@ -316,7 +319,8 @@ export default function Detail(){
                     <textarea
                         className={styles.adminMemo}
                         value={memberData.adminMemo}
-                        onChange={(e) => handleDataChange('adminMemo', '', e.target.value)}
+                        onChange={(e) =>
+                            handleDataChange('adminMemo', '', e.target.value)}
                         aria-label="관리자 메모"
                     />
                 </section>
